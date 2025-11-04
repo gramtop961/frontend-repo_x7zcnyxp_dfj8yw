@@ -1,13 +1,13 @@
-import { useMemo, useState } from 'react';
-import Navbar from './components/Navbar.jsx';
-import Hero from './components/Hero.jsx';
-import ProductGrid from './components/ProductGrid.jsx';
-import CartBar from './components/CartBar.jsx';
+import { useMemo, useState } from 'react'
+import Navbar from './components/Navbar.jsx'
+import Hero from './components/Hero.jsx'
+import ProductGrid from './components/ProductGrid.jsx'
+import CartBar from './components/CartBar.jsx'
 
-function App() {
-  const [searchQuery, setSearchQuery] = useState('');
-  const [selectedBrand, setSelectedBrand] = useState(null);
-  const [cart, setCart] = useState([]);
+export default function App() {
+  const [searchQuery, setSearchQuery] = useState('')
+  const [selectedBrand, setSelectedBrand] = useState('')
+  const [cart, setCart] = useState([])
 
   const products = useMemo(() => ([
     {
@@ -74,37 +74,37 @@ function App() {
       rating: 4.2,
       image: 'https://images.unsplash.com/photo-1711129250487-42c9078effe6?ixid=M3w3OTkxMTl8MHwxfHNlYXJjaHwxfHxOb3RoaW5nJTIwUGhvbmUlMjAlMjgyJTI5fGVufDB8MHx8fDE3NjIyNzY1OTZ8MA&ixlib=rb-4.1.0&w=1600&auto=format&fit=crop&q=80'
     }
-  ]), []);
+  ]), [])
 
   const handleAddToCart = (product) => {
     setCart((prev) => {
-      const exists = prev.find((p) => p.id === product.id);
+      const exists = prev.find((p) => p.id === product.id)
       if (exists) {
-        return prev.map((p) => (p.id === product.id ? { ...p, quantity: p.quantity + 1 } : p));
+        return prev.map((p) => (p.id === product.id ? { ...p, quantity: p.quantity + 1 } : p))
       }
-      return [...prev, { ...product, quantity: 1 }];
-    });
-  };
+      return [...prev, { ...product, quantity: 1 }]
+    })
+  }
 
   const handleIncrement = (id) => {
-    setCart((prev) => prev.map((p) => (p.id === id ? { ...p, quantity: p.quantity + 1 } : p)));
-  };
+    setCart((prev) => prev.map((p) => (p.id === id ? { ...p, quantity: p.quantity + 1 } : p)))
+  }
 
   const handleDecrement = (id) => {
     setCart((prev) => prev
       .map((p) => (p.id === id ? { ...p, quantity: Math.max(0, p.quantity - 1) } : p))
-      .filter((p) => p.quantity > 0)
-    );
-  };
+      .filter((p) => p.quantity > 0))
+  }
 
   const handleRemove = (id) => {
-    setCart((prev) => prev.filter((p) => p.id !== id));
-  };
+    setCart((prev) => prev.filter((p) => p.id !== id))
+  }
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-white text-gray-900">
       <Navbar onSearch={setSearchQuery} />
       <Hero />
+
       <ProductGrid
         products={products}
         searchQuery={searchQuery}
@@ -112,18 +112,19 @@ function App() {
         onBrandChange={setSelectedBrand}
         onAddToCart={handleAddToCart}
       />
+
       <div className="h-10" />
+
       <CartBar
         items={cart}
         onIncrement={handleIncrement}
         onDecrement={handleDecrement}
         onRemove={handleRemove}
       />
+
       <footer className="mt-12 border-t py-10 text-center text-sm text-gray-600">
         © {new Date().getFullYear()} MobileMart. All rights reserved.
       </footer>
     </div>
-  );
+  )
 }
-
-export default App;

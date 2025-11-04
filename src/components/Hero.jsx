@@ -1,4 +1,4 @@
-import Spline from '@splinetool/react-spline';
+import Spline from '@splinetool/react-spline'
 
 export default function Hero() {
   return (
@@ -23,5 +23,5 @@ export default function Hero() {
       </div>
       <div className="pointer-events-none absolute inset-x-0 -bottom-10 h-24 bg-gradient-to-b from-transparent to-white" />
     </section>
-  );
+  )
 }

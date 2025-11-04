@@ -1,14 +1,14 @@
-import { useState } from 'react';
-import { ShoppingCart, Smartphone, Search } from 'lucide-react';
+import { useState } from 'react'
+import { ShoppingCart, Smartphone, Search } from 'lucide-react'
 
 export default function Navbar({ onSearch }) {
-  const [query, setQuery] = useState('');
+  const [query, setQuery] = useState('')
 
   const handleChange = (e) => {
-    const val = e.target.value;
-    setQuery(val);
-    onSearch?.(val);
-  };
+    const val = e.target.value
+    setQuery(val)
+    if (onSearch) onSearch(val)
+  }
 
   return (
     <header className="sticky top-0 z-50 bg-white/80 backdrop-blur border-b">
@@ -21,14 +21,12 @@ export default function Navbar({ onSearch }) {
             <span className="font-semibold text-lg">MobileMart</span>
           </div>
 
-          <div className="hidden md:flex items-center">
-            <nav className="flex items-center gap-6 text-sm text-gray-600">
-              <a href="#" className="hover:text-indigo-600">Home</a>
-              <a href="#products" className="hover:text-indigo-600">Products</a>
-              <a href="#deals" className="hover:text-indigo-600">Deals</a>
-              <a href="#support" className="hover:text-indigo-600">Support</a>
-            </nav>
-          </div>
+          <nav className="hidden md:flex items-center gap-6 text-sm text-gray-600">
+            <a href="#" className="hover:text-indigo-600">Home</a>
+            <a href="#products" className="hover:text-indigo-600">Products</a>
+            <a href="#deals" className="hover:text-indigo-600">Deals</a>
+            <a href="#support" className="hover:text-indigo-600">Support</a>
+          </nav>
 
           <div className="flex-1 max-w-md">
             <div className="relative">
@@ -50,5 +48,5 @@ export default function Navbar({ onSearch }) {
         </div>
       </div>
     </header>
-  );
+  )
 }

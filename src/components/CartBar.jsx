@@ -1,8 +1,8 @@
-import { Minus, Plus, Trash2 } from 'lucide-react';
+import { Minus, Plus, Trash2 } from 'lucide-react'
 
 export default function CartBar({ items, onIncrement, onDecrement, onRemove }) {
-  const total = items.reduce((sum, it) => sum + it.price * it.quantity, 0);
-  const count = items.reduce((sum, it) => sum + it.quantity, 0);
+  const total = items.reduce((sum, it) => sum + it.price * it.quantity, 0)
+  const count = items.reduce((sum, it) => sum + it.quantity, 0)
 
   return (
     <div className="sticky bottom-4 z-40">
@@ -56,5 +56,5 @@ export default function CartBar({ items, onIncrement, onDecrement, onRemove }) {
         </div>
       </div>
     </div>
-  );
+  )
 }

@@ -1,4 +1,4 @@
-import { Star, Plus } from 'lucide-react';
+import { Star, Plus } from 'lucide-react'
 
 function ProductCard({ product, onAdd }) {
   return (
@@ -33,17 +33,17 @@ function ProductCard({ product, onAdd }) {
         </div>
       </div>
     </div>
-  );
+  )
 }
 
 export default function ProductGrid({ products, searchQuery, selectedBrand, onBrandChange, onAddToCart }) {
-  const brands = Array.from(new Set(products.map(p => p.brand)));
+  const brands = Array.from(new Set(products.map(p => p.brand)))
 
   const filtered = products.filter(p => {
-    const matchesQuery = !searchQuery || `${p.name} ${p.brand}`.toLowerCase().includes(searchQuery.toLowerCase());
-    const matchesBrand = !selectedBrand || p.brand === selectedBrand;
-    return matchesQuery && matchesBrand;
-  });
+    const matchesQuery = !searchQuery || `${p.name} ${p.brand}`.toLowerCase().includes(searchQuery.toLowerCase())
+    const matchesBrand = !selectedBrand || p.brand === selectedBrand
+    return matchesQuery && matchesBrand
+  })
 
   return (
     <section id="products" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
@@ -54,7 +54,7 @@ export default function ProductGrid({ products, searchQuery, selectedBrand, onBr
           <select
             id="brand"
             value={selectedBrand || ''}
-            onChange={(e) => onBrandChange(e.target.value || null)}
+            onChange={(e) => onBrandChange(e.target.value || '')}
             className="text-sm border rounded-lg px-3 py-2"
           >
             <option value="">All</option>
@@ -78,5 +78,5 @@ export default function ProductGrid({ products, searchQuery, selectedBrand, onBr
         </div>
       )}
     </section>
-  );
+  )
 }
